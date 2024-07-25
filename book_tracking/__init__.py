@@ -20,11 +20,7 @@ def create_app(test_config=None):
     migrate.init_app(app, db)
 
     with app.app_context():
-        from .routes import main, auth
+        from .routes import main
         app.register_blueprint(main.main_bp)
-        app.register_blueprint(auth.auth_bp)
-
-        from .repos.alchemy import alchemy
-        app.repo = alchemy()
     
     return app
