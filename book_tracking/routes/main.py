@@ -60,7 +60,16 @@ def add_book():
         )
 
         db.session.add(new_book)
+        db.session.commit() # Commit to get the id for tracking
+
+        new_tracking = Tracking(
+            pages_read = data.get('pages_read', 0), # Default to 0 if not provided
+            book_id = new_book.id
+        )
+
+        db.session.add(new_tracking)
         db.session.commit()
+
 
         return jsonify({'message': 'Success', 'book': new_book.title})
 

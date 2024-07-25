@@ -15,7 +15,7 @@ class Book(db.Model):
     pages = db.Column(db.Integer, nullable=False)
     pages_read = db.Column(db.Integer, nullable=True, default=0)
 
-    tracking = db.relationship('Tracking', back_populates='book', lazy=True)
+    trackings = db.relationship('Tracking', back_populates='book', lazy=True)
 
     def to_dict(self):
         return {

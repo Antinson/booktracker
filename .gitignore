@@ -1,3 +1,6 @@
 .env
 venv
 __pycache__
+book_files
+book_tracking/book.db
+*.db
