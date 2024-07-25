@@ -1,4 +1,4 @@
-from . import db
+from book_tracking import db
 from datetime import datetime
 
 class Book(db.Model):
@@ -15,7 +15,7 @@ class Book(db.Model):
     pages = db.Column(db.Integer, nullable=False)
     pages_read = db.Column(db.Integer, nullable=True, default=0)
 
-    tracking = relationship('Tracking', back_populates='book', lazy=True)
+    tracking = db.relationship('Tracking', back_populates='book', lazy=True)
 
     def to_dict(self):
         return {

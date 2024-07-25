@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, jsonify, redirect, url_for, Blueprint, current_app, make_response
-import services
-from .models import Book, Tracking
+from book_tracking.models import Book, Tracking
+from book_tracking import db
 
 main_bp = Blueprint('main', __name__)
 
