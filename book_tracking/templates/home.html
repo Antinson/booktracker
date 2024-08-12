@@ -4,68 +4,110 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Book Management</title>
+    <script src="../static/js/books.js"></script>
     <style>
         .book-container {
             display: flex;
-            align-items: center; /* Aligns items vertically in the center */
-            gap: 1px; /* Specifies the exact amount of space between items */
-            padding: 20px; /* Optional: adds padding around the container */
+            align-items: center;
+            gap: 1px;
+            padding: 20px;
         }
 
-        /* Style individual items */
         .item {
-            padding: 20px; /* Adds padding inside each item */
-            text-align: center; /* Centers text inside each item */
+            padding: 20px;
+            text-align: center;
         }
 
         #filter {
             display: flex;
-            align-items: center; /* Aligns items to the center vertically */
-            gap: 20rem; /* Specifies the exact amount of space between filter items */
-            padding: 0px; /* Optional: adds padding around the filter container */
-            width: 100%; /* Makes the filter container take full width */
+            align-items: center;
+            gap: 20rem;
+            padding: 0px;
+            width: 100%;
         }
 
         #add-book-button {
             margin-left: auto;
             display: flex;
-            align-items: flex-end; /* Aligns the button to the end of the container */
+            align-items: flex-end;
             padding: 20px;
         }
 
-
         .filter-item {
             display: flex;
-            flex-direction: column; /* Stacks label and select vertically */
-            align-items: flex-start; /* Aligns items to the start horizontally */
+            flex-direction: column;
+            align-items: flex-start;
         }
 
         #add-book {
-            padding: 10px 20px; /* Adds padding inside the button */
-            background-color: #007bff; /* Button color */
-            color: white; /* Text color */
-            border: none; /* Removes border */
-            border-radius: 5px; /* Adds rounded corners */
-            cursor: pointer; /* Adds pointer cursor on hover */
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
         }
 
         #add-book:hover {
-            background-color: #0056b3; /* Darker button color on hover */
+            background-color: #0056b3;
         }
 
         #main-area {
             margin: auto;
             padding: 40px;
         }
+
+        /* Carousel Styles */
+        #books-entries {
+            display: flex;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+        }
+
+        .book-card {
+            flex: 0 0 auto;
+            width: 200px;
+            margin-right: 16px;
+            padding: 16px;
+            background-color: #f4f4f4;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .book-card img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 12px;
+        }
+
+        .carousel-controls {
+            text-align: center;
+            margin-top: 16px;
+        }
+
+        .carousel-controls button {
+            padding: 8px 16px;
+            margin: 0 8px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .carousel-controls button:hover {
+            background-color: #0056b3;
+        }
     </style>
 </head>
 <body>
     <div class="book-container">
         <div class="item">
-            <img src="../images/logo.svg" alt="Logo">
+            <img src="../static/images/logo.svg" alt="Logo">
         </div>
         <div class="item">
-            <img src="../images/seperator.svg" alt="Separator">
+            <img src="../static/images/seperator.svg" alt="Separator">
         </div>
         <div class="item">
             <h1 class="title">BOOK MANAGEMENT</h1>
@@ -105,8 +147,12 @@
             <div class="title">
                 <h1>My Books</h1>
             </div>
-            <div class="books">
-                <!-- Books content -->
+            <div class="books" id="books-entries">
+                <!-- Book cards will be dynamically inserted here -->
+            </div>
+            <div class="carousel-controls">
+                <button onclick="scrollCarousel(-200)">&#10094; Prev</button>
+                <button onclick="scrollCarousel(200)">Next &#10095;</button>
             </div>
         </div>
     </div>
